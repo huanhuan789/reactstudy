@@ -9,7 +9,7 @@ export default class App extends Component {
         return (
             <div>
                 <img className="logo" src={logo} alt="logo"/>
-                <p className="title">我是红色</p>
+                <p className="title">我是测试练习tag切换查看</p>
             </div>
         );
     }
