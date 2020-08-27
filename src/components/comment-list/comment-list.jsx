@@ -9,13 +9,15 @@ export default class CommentList extends Component {
     }
     render() {
         console.log(this.props)
-        const { comments } = this.props
+        const { comments,deleteComment } = this.props
+        // 计算隐藏的样式显示
+        const display=comments.length===0?'block':'none'
         return (
             <div className="col-md-8">
                 <h3 className="reply">评论回复：</h3>
-                <h2 style={{ display: 'none' }}>暂无评论，点击左侧添加评论！！！</h2>
+                <h2 style={{display}}>暂无评论，点击左侧添加评论！！！</h2>
                 <ul className="list-group">
-                    {comments.map((comment,index)=><CommentIterm comment={comment} key={index}/>)}
+                    {comments.map((comment,index)=><CommentIterm comment={comment} key={index} deleteComment={deleteComment} index={index}/>)}
 
                 </ul>
             </div>
@@ -23,5 +25,6 @@ export default class CommentList extends Component {
     }
 }
 CommentList.propTypes = {
-    comments: PropTypes.array.isRequired
+    comments: PropTypes.array.isRequired,
+    deleteComment:PropTypes.func.isRequired
 }
